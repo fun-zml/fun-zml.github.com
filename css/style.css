@@ -382,7 +382,7 @@ nav a:hover:after { width: 100%; }
 	padding: 5em 0;
 }
 .agile-w3l-ab {
-	width: 420px;
+	width: 409px;
     background: #fff;
     border: 30px solid #fff;
 	padding:0;
@@ -390,6 +390,7 @@ nav a:hover:after { width: 100%; }
 	-moz-box-shadow: -2px 7px 27px -4px rgba(0,0,0,0.75);
 	box-shadow: -2px 7px 27px -4px rgba(0,0,0,0.75);
 	margin-right: 100px;
+	border-radius: 50%;
 }
 .w3ls-agile-left {
     padding: 2.4em 3em;
@@ -543,7 +544,7 @@ h3.w3l-title:after {
 }
 .rslides img {
   height: 472px;
-  border: 0;
+  border-radius: 50%;
   }
 .callbacks_tabs {
     list-style: none;
@@ -1480,6 +1481,7 @@ a.accordion-section-title span {
 	}
 	.agile-w3l-ab-img img {
 		width: 100%;
+		border-radius: 50%;
 	}
 	.w3ls-agile-left-info {
 		padding: 1em 0;
