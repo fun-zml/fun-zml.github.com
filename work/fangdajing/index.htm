@@ -1,0 +1,32 @@
+<!--
+	作者：1414723944@qq.com
+	时间：2017-11-23
+	描述：插件参考http://www.jq22.com/jquery-info6385，根据自身需求调整了一些内容
+-->
+
+<!DOCTYPE html5>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="demo.css" tppabs="http://www.jq22.com/demo/jQueryZoom201711270026/demo.css"/>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="left">
+				<img src="tp.jpg" tppabs="http://www.jq22.com/demo/jQueryZoom201711270026/tp.jpg" class="demo1" />
+			</div>
+			<div class="right">
+				<img src="tp.jpg" tppabs="http://www.jq22.com/demo/jQueryZoom201711270026/tp.jpg" class="demo2" />
+			</div>
+		</div>
+	</body>
+	<script src="jquery.min.js" tppabs="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script src="blowup.js" tppabs="http://www.jq22.com/demo/jQueryZoom201711270026/blowup.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+	 		$(".demo1").blowup({},"demo2");
+			$(".demo2").blowup({},"demo1");
+	 	})
+	</script>
+</html>

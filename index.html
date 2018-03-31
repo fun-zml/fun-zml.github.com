@@ -27,8 +27,49 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //online-fonts -->
 </head>
 <body> 
-<!-- banner -->
+	<!-- banner -->
 <div id="home" class="banner">
+	<div class="banner-agileinfo">
+		<!-- header -->
+		<div class="header">
+			<div class="container">		
+<!--				<div class="logo">
+					<h1><a href="index.html"></a></h1>
+				</div> -->
+				<div class="menu">
+					<a href="" id="menuToggle"> <span class="navClosed"></span> </a>
+					<nav>  
+						<a href="#about" class="scroll">关于我</a>  
+						<a href="#experience" class="scroll">工作经验</a> 
+						<a href="#projects" class="scroll">我的项目</a>
+						<a href="#skills" class="scroll">我的技能</a>  
+					</nav>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+		<!-- //header -->
+		<div class="banner-main">
+			<div class="container">	
+				<div class="col-md-5 banner-left" style="border-radius: 50%;margin-top: 20px;">
+					<img src="images/ii1.jpg" alt="" style="border-radius: 50px;"> 
+				</div>
+				<div class="col-md-7 banner-text">
+					<p>Welcome</p>
+					<h2><span>I am Zhao menglong</span> Web前端工程师</h2>
+					<div class="w3agile_hire_right">
+						<a href="#about" class="wthree-more w3more1 nina scroll" data-text="hire me"> 
+							<span>h</span><span>i</span><span>r</span><span>e</span> <span>m</span><span>e</span>
+						</a> 
+					</div>
+				</div>
+			</div> 
+		</div>
+	</div>
+</div>
+<!-- //banner -->
+<!-- banner -->
+<!--<div id="home" class="banner">
 	<div class="banner-agileinfo">
 		<!-- header -->
 		<div class="header">
@@ -36,10 +77,10 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 				<div class="menu">
 					<a href="" id="menuToggle"> <span class="navClosed"></span> </a>
 					<nav>  
-						<a href="#about" class="scroll">About Me</a>  
-						<a href="#experience" class="scroll">Experience</a> 
-						<a href="#projects" class="scroll">My Projects</a>
-						<a href="#skills" class="scroll">My Skills</a>  
+						<a href="#about" class="scroll">关于我</a>  
+						<a href="#experience" class="scroll">工作经验</a> 
+						<a href="#projects" class="scroll">我的项目</a>
+						<a href="#skills" class="scroll">我的技能</a>  
 					</nav>
 				</div>
 				<div class="clearfix"> </div>
@@ -47,12 +88,12 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 		</div>
 		<!-- //header -->
 	</div>
-</div>
+</div>-->
 <!-- //banner -->
 <!-- about -->
 <div class="about" id="about">
 	<div class="container">
-		<h3 class="w3l-title">My Self</h3>
+		<h3 class="w3l-title">关于我</h3>
 		<div class="about-w3l-agileifo-grid">
 			<div class="col-md-6 agile-w3l-ab media-right">
 				<ul class="rslides" id="slider">
@@ -97,53 +138,51 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- experience -->
 <div class="services-w3l" id="experience">
 	<div class="container">
-		<h3 class="w3l-title">Work Experience</h3>
+		<h3 class="w3l-title">工作经验</h3>
 		<div class="wthree_latest_albums_grids">
 			<div class="cntl"> <span class="cntl-bar cntl-center"> <span class="cntl-bar-fill"></span> </span>
 				<div class="cntl-states">
 					<div class="cntl-state">
 						<div class="cntl-content">
-							<h4>2017 Present</h4>
-							<p>SENIOR PROJECT MANAGER</p>
+							<h4 style="text-align: right;">商城网站</h4>
+							<p style="text-align: right;">使用mvc思想、oop面向对象思想、基于JQuery的EasyUI框架等技术来做-->>></p>
 						</div>
 						<div class="cntl-image">
-							<img src="images/w1.jpg" alt=" " class="img-responsive" />
+							<a href="shop/index.html"><img src="images/ashop.png" alt=" " class="img-responsive" /></a>
 							<div class="w3ls_cntl_image_pos">
-								<p>Sed do eiusmod tempor incididunt et dolore magna aliqua.</p>
+								<p>主要是使用HTML5+css3+JavaScript操作Dom对象进行网站的开发与制造</p>
 							</div>
 						</div>
 						<div class="cntl-icon cntl-center">01</div>
 					</div>
 					<div class="cntl-state">
 						<div class="cntl-content">
-							<h4>2013 to 2016</h4>
-							<p>FRONT END DEVELOPER</p>
+							<h4>翻牌小游戏</h4>
+							<p><<<--用源生JavaScript制作扑克牌游戏</p>
 						</div>
-						<div class="cntl-image w3_cntl_image"><img src="images/w2.jpg" alt=" " class="img-responsive" /></div>
+						<div class="cntl-image w3_cntl_image"><a href="puke/index.html"><img src="images/puke.png" alt=" " class="img-responsive" /></a></div>
 						<div class="cntl-icon cntl-center">02</div>
 					</div>
 					<div class="cntl-state">
 						<div class="cntl-content">
-							<h4>2010 to 2013</h4>
-							<p>Microsoft & IT Solutions</p>
+							<h4 style="text-align: right;">OA项目-->>></h4>
 						</div>
 						<div class="cntl-image">
-							<img src="images/w3.jpg" alt=" " class="img-responsive" />
+							<a href="OA/index.html"><img src="images/oa.png" alt=" " class="img-responsive" /></a>
 							<div class="w3ls_cntl_image_pos">
-								<p>Sed do eiusmod tempor incididunt et dolore magna aliqua.</p>
+								<p>用bootstrap框架制作弹性盒模型</p>
 							</div>
 						</div>
 						<div class="cntl-icon cntl-center">03</div>
 					</div>
 					<div class="cntl-state">
 						<div class="cntl-content">
-							<h4>2007 to 2010</h4>
-							<p>WebStyle Technologies</p>
+							<h4><<<--canvas3D动画</h4>
 						</div>
 						<div class="cntl-image">
-							<img src="images/w4.jpg" alt=" " class="img-responsive" />
+							<a href="pic/demo1.html"><img src="images/pic.png" alt=" " class="img-responsive" /></a>
 							<div class="w3ls_cntl_image_pos">
-								<p>Sed do eiusmod tempor incididunt et dolore magna aliqua.</p>
+								<p>用canvas制作3D动画相册</p>
 							</div>
 						</div>
 						<div class="cntl-icon cntl-center">04</div>
@@ -158,30 +197,30 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- projects -->
 <div class="portfolio" id="projects">
 	<div class="container">
-		<h3 class="w3l-title">My Projects</h3>
+		<h3 class="w3l-title">我的项目</h3>
 		<div class="agileits_portfolio_grids">
 			<div class="col-md-3 agileits_portfolio_grid">
 				<div class="agileinfo_portfolio_grid hovereffect">
-					<a class="cm-overlay" href="images/g1.jpg">
-						<img src="images/g1.jpg" alt=" " class="img-responsive">
+					<a href="jd/index.html">
+						<img src="images/photo.png" alt=" " class="img-responsive">
 						<div class="overlay">
-							<h4>Classic CV</h4>
+							<h4>JQuery前移相册</h4>
 						</div>
 					</a>
 				</div>
 				<div class="agileinfo_portfolio_grid hovereffect">
-					<a class="cm-overlay" href="images/g2.jpg">
-						<img src="images/g2.jpg" alt=" " class="img-responsive">
+					<a  href="work/china-map.html">
+						<img src="images/map.png" alt=" " class="img-responsive">
 						<div class="overlay">
-							<h4>Classic CV</h4>
+							<h4>用JQuery制作地图</h4>
 						</div>
 					</a>
 				</div>
 				<div class="agileinfo_portfolio_grid hovereffect">
-					<a class="cm-overlay" href="images/g3.jpg">
-						<img src="images/g3.jpg" alt=" " class="img-responsive">
+					<a  href="work/biao.html">
+						<img src="images/biao.png" alt=" " class="img-responsive">
 						<div class="overlay">
-							<h4>Classic CV</h4>
+							<h4>绘制钟表</h4>
 						</div>
 					</a>
 				</div>
@@ -280,7 +319,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- //introduce -->
 <div class="stats wthree-sub" id="skills">
 	<div class="container"> 
-		<h3 class="w3l-title">My Skills</h3>
+		<h3 class="w3l-title">我的技能</h3>
 		<div class="col-sm-6 stats_grid_right">
 			<div class="skillbar" data-percent="78">
 			  <span class="skillbar-title" style="background: #f1703a;">Wordpress</span>
@@ -330,7 +369,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- interests --> 
 <div class="intra-w3l">
 	<div class="container">
-		<h3 class="w3l-title">Interests</h3>
+		<h3 class="w3l-title">兴趣爱好</h3>
 		<div class="agile-w3l-in">
 			<i class="fa fa-camera" aria-hidden="true"></i>
 			<p>PHOTOGRAPHY</p>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			svg{border: 1px solid red;}
+			body{background: saddlebrown;}
+		</style>
+		<script src="jquery-1.11.3.min.js"></script>
+	</head>
+	<body>
+		<svg class="clock" width="1000" height="800">
+			<circle cx="250" cy="250" r="245" stroke="green" stroke-width="1" fill="#fff"></circle>
+			<circle cx="250" cy="250" r="5" stroke="yellow" stroke-width="3"fill="block"></circle>
+		</svg>
+	</body>
+	<script>
+			var x0=250;
+			var y0=250; 
+			var r=220;
+			var a=0;
+			var num=0;
+			
+			for(var i=0;i<60;i++){
+			draw();
+		}
+		function draw(){
+			var a=(Math.PI*2/60)*num
+			var c=document.createElementNS("http://www.w3.org/2000/svg","circle");
+			var x1=x0+r*Math.cos(a);
+			var y1=y0+r*Math.sin(a);
+			
+			if(num%5==0){
+				r1=8;
+				color="red";
+			}else{
+				r1=5;
+				color="#666";
+			}
+			
+			$(c).attr({
+				cx:x1,
+				cy:y1,
+				r:r1,
+				stroke:color,
+				"stroke-width":2,
+				fill:"none"
+			}).appendTo(".clock")
+			num++;
+		}
+			
+		//-----------------------秒针	
+		var sL=document.createElementNS("http://www.w3.org/2000/svg","line");
+		var oDate=new Date;
+		var s=oDate.getSeconds();
+		var a=(Math.PI*2/60)*s-Math.PI/2;
+		var x1=250;
+		var y1=250;
+		var x2=x1+190*Math.cos(a);
+		var y2=y1+190*Math.sin(a);
+		
+		$(sL).
+		attr({
+			x1:x1,
+			y1:y1,
+			x2:x2,
+			y2:y2,
+			stroke:"red",
+			"stroke-width":3
+		}).appendTo(".clock")
+		
+		function run(){
+			var oDate=new Date;
+			var s=oDate.getSeconds();
+			var a=(Math.PI*2/60)*s-Math.PI/2;
+			var x2=x1+190*Math.cos(a);
+			var y2=y1+190*Math.sin(a);
+			$(sL).attr({
+				x2:x2,
+				y2:y2
+			})
+		}
+		setInterval(run,1000)
+	</script>
+</html>

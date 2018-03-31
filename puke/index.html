@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>翻牌游戏</title>
+	<style type="text/css">
+      *{
+      	margin: 0;
+      	padding: 0;	
+      }
+      .poker{
+      	width: 142px;
+      	height: 199px;
+      	float: left;
+      	margin:10px;
+      }
+      .nobg .bg{
+      	display: none;
+      }
+      .bg{
+      	background-image: url(images/cardbg.jpg);
+      	width: 100%;
+      	height: 100%;
+      	position: absolute;
+      	top:0;
+      	left: 0;
+      	z-index: 3;
+      }
+	</style>
+</head>
+<body>
+	<input type="text"  id="tex1" placeholder="输入难度2-9" /><button id="btn">开始游戏</button><button id="btn2">重新开始</button>
+	<div id="box">
+		<!-- <div class="poker">
+			<img src="images/card1.jpg"/>
+			<div class="bg"></div>
+		</div>
+		 -->
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	var otx=document.getElementById("tex1");
+	var obtn=document.getElementById("btn");
+	var obtn2=document.getElementById("btn2");
+	var obox=document.getElementById("box");
+    var arr=[],prev;
+	obtn.onclick=function(){
+
+		/*根据用户输入难度 创建数组*/	
+			var num=otx.value;
+			obtn.disabled=true;
+			for(var i=1;i<=num;i++){
+				arr.push(i,i);
+			}	
+	   
+	    /*创建扑克牌 插入*/
+	    for(var i=0;i<num*2;i++){
+			var opoker=document.createElement("div");
+			var oimg=document.createElement("img");
+			var bg=document.createElement("div");
+			var n=parseInt(Math.random()*arr.length);
+
+	   
+			oimg.src="images/card"+arr[n]+".jpg";
+			
+			opoker.appendChild(oimg);
+	        opoker.className="poker";
+	        opoker.setAttribute("data-index",arr[n]);
+	        bg.className="bg";
+
+	        arr.splice(n,1)
+	        
+	        opoker.appendChild(bg);
+	        obox.appendChild(opoker);
+	        
+
+		}
+	    
+	    /*设置扑克牌定位*/
+	    var ap=document.getElementsByClassName("poker")
+	    for(var j=num*2-1;j>=0;j--){
+	    	ap[j].style.left=ap[j].offsetLeft+"px";
+	    	ap[j].style.top=ap[j].offsetTop+"px";
+	    	ap[j].style.position="absolute";
+	    }
+
+
+	    for(var k=0;k<ap.length;k++){
+	    	ap[k].onclick=function(){
+                    
+	    	    	this.className="poker nobg";
+	                if(prev){
+	                	 if(prev==this){ return}
+	                     if(prev.getAttribute("data-index")==this.getAttribute("data-index")){
+                            var _this=this;
+	                        setTimeout(function(){
+	                             _this.style.display="none";
+	                             prev.style.display="none";
+	                         
+	                        },500)
+	                      }
+	                      else{
+	                      	prev.className="poker";
+	                      	prev=this;
+	                      }
+                    }
+                     else{
+                     	prev=this;
+                     } 	 
+	    	
+	    			
+	   
+	    		
+	    	}
+	    }
+
+        
+    }
+	obtn2.onclick=function(){
+		obtn.disabled=false;
+		otx.value="";
+		obox.innerHTML="";
+
+	}
+
+</script>

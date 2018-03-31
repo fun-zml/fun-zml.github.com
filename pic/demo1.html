@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>3D图片上下翻牌切换效果</title>
+	<link href='css/flipping_gallery.css' rel='stylesheet' type='text/css'>	
+	<script type="text/javascript" src="js/jquery.js"></script>
+  <style>
+     *{
+      margin: 0;
+      padding: 0;
+     }
+     body,html{
+      height: 100%;
+      background-color: #333
+     }
+    .pic{
+      width: 500px;
+      height: 333px;
+      margin: 100px auto;
+      transform-style: preserve-3d;
+      perspective:1000px;
+      position: relative;
+      transform:rotateX(-20deg);
+    }
+    .pic>div{
+      height: 100%;
+      color: white;
+      position: absolute;
+      border: 6px solid;
+      border-radius:6px;
+      top:0;
+      left:0;
+      transition: all 0.5s;
+      transform-origin: bottom;
+      opacity: 1;
+    }
+    .btn{
+      margin-top: 50px;
+      display: inline-block;
+      width: 100px;
+      height:30px;
+      line-height: 30px;
+      text-align: center;
+      background-color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .prev{margin-left: 500px;}
+	</style>
+	<script>
+	  $(function() {
+       var  num=$(".pic>div").size();
+       
+       function transZ(){
+             $(".pic>div").each(function(i){        //i==index
+               $(this).css({"transform":"translateZ("+i*40+"px)  rotateX(0deg) "})    //向前推动
+             })
+       }
+	     transZ()
+
+       $(".next").click(function(){
+             $last=$(".pic>div").last()        //找到结构上最后一张，视觉上第一张
+             $last.css({"transform":"translateZ("+num*40+"px)  rotateX(-180deg)","opacity":"0"});
+             
+
+              setTimeout(function(){
+                      $last.css({"opacity":"1"}).prependTo( $(".pic") );   //prependTo是把图片再重新放入结构上的第一张
+                      transZ();
+              },300)
+
+       })
+
+
+
+        $(".prev").click(function(){
+             $first=$(".pic>div").first();           //找到结构上第一张，视觉上最后一张
+             $clone=$first.clone(true);              //克隆一个，放在-180°的地方，屏幕下方，并且隐藏起来
+             $clone.css({"opacity":"0","transform":"translateZ("+num*40+"px) rotateX(-180deg)","transform-origin": "bottom"}).appendTo($(".pic"));
+
+             setTimeout(function(){
+
+                  $clone.css({"transform":"translateZ("+num*40+"px)  rotateX(0deg)","transition":"all .5s","opacity":"1"});
+                  $first.remove();                  //克隆的那个出现在视觉前结构上，原本位于结构上的要删除掉
+                  transZ();
+             }, 300)
+       })
+
+
+	  });
+		
+	</script>
+</head>
+<body>
+<div class="pic">
+  <div><img src="img/1.jpg"></div>
+  <div><img src="img/2.jpg"></div>
+  <div><img src="img/3.jpg"></div>
+  <div><img src="img/4.jpg"></div>
+  <div><img src="img/5.jpg"></div>
+</div>
+  <a href="#" class="btn prev">上一张</a>
+  <a href="#" class="btn next">下一张</a>
+</body>
+</html>
