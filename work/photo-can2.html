@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/jquery-3.1.0.min.js"></script>
+		<style>
+			body{ width:100vw; height: 100vh; overflow: hidden;}
+			.wrap{ width:980px; height: 500px; margin: 0 auto; position: relative;}
+			.wrap>div{ background-image: url(img/1.jpg); position: absolute; }
+		</style>
+	</head>
+	<body>
+		<div class="wrap"></div>
+	</body>
+</html>
+
+<script>
+	
+$(function(){
+	
+	var xNum = 20;
+	var yNum = 15;
+	var $wrap=$(".wrap")
+	var w = $wrap.width()/xNum;
+	var h = $wrap.height()/yNum;
+    
+	// 初始化div
+	for(var x=0;x<xNum;x++){
+		for(var y=0;y<yNum;y++){
+			var disX = x*w;
+			var disY = y*h;
+			$("<div></div>")
+			.css({
+				width:w+"px",
+				height:h+"px",
+				left:disX+"px",
+				top:disY+"px",
+				"background-position":(-1)*disX+"px "+(-1)*disY+"px"
+			})
+			.appendTo($wrap)
+		}
+	}
+	
+	//点击事件
+	var isTogather = true;
+	$(document).click(function(){
+		 if(isTogather){
+		 	 disperse();
+		 }else{
+		 	 togather()
+		 }
+		 isTogather=!isTogather
+	})
+	
+	function disperse(){
+		
+		$(".wrap>div").each(function(){
+			
+			var disX = Math.random()*6000-3000; // [-3000,3000)
+			var disY = Math.random()*6000-3000; // [-3000,3000)
+			var time = Math.random()*3+1;
+			
+			$(this).css({
+				"transform":"translate("+disX+"px,"+disY+"px)",
+				"opacity":0,
+				"transition":"all "+time+"s"
+			})
+			
+		})
+	}
+	
+	function togather(){
+		$(".wrap>div").css({
+			"transform":"translate(0)",
+			"opacity":1
+		})
+	}
+	
+})
+
+</script>

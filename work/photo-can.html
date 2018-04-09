@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../js/jquery-3.1.0.min.js"></script>
+		<style>
+			body{background-color: #000;}
+			.wrap{ width:980px; height: 500px; position: relative; margin: 0 auto;margin-top:150px;}
+			.wrap>div{ width:196px; height: 100px; position: absolute; background-color: #fff;transition: transform 1s;}
+			.wrap>div>.pic{ width:100%; height:100% ; transition: transform 1s;}
+		</style>
+	</head>
+	<body>
+		<div class="wrap"></div>
+	</body>
+</html>
+
+<script>
+	
+	// 1 初始化25个小div
+	var $wrap = $(".wrap");
+	for(var i=0;i<25;i++){
+		var x = i%5;
+		var y = parseInt(i/5);
+		
+		$("<div><div class='pic'></div></div>")
+		.css({
+			left:x*196+"px",
+			top:y*100+"px"
+		})
+		.appendTo($wrap)
+	}
+	
+	// 2 显示25张小图
+	function showSmall(){
+		
+		$(".wrap>div").each(function(index){
+			$(".pic").css({
+				"transform":"scale(0.95,0.9)"
+			});
+			var x = index%5;
+			var y = parseInt(index/5);
+			
+			var disX = (x-2)*50;
+			var disY = (y-2)*50;
+			
+			var deg = Math.random()*60-30// [-30deg,30deg)
+			
+			$(this).css({
+				"transform":"translate("+disX+"px,"+disY+"px) rotate("+deg+"deg)",
+			});
+			
+			$(this).find(".pic")
+			.css({
+				"background-image":"url(img/"+index+".jpg)",
+				"background-size":"cover"
+			})
+		})
+	}
+	
+	//showSmall();
+	
+	// 3 显示单张大图
+	function showBig(index){
+		
+		$(".wrap>div").css({
+			transform:"translate(0,0)"
+		})
+		
+		$(".pic").css({
+			"background-image":"url(img/"+index+".jpg)",
+			"background-size":"auto",
+			"transform":"scale(1)"
+		})
+		
+		$(".pic").each(function(i){
+			var x = i%5;
+			var y = parseInt(i/5);
+			
+			$(this).css({
+				"background-position":(-1)*196*x+"px " +(-1)*100*y+"px"
+			})
+		})
+		
+	}
+	
+	
+	// 4 大图和小图切换
+	//showBig(9)
+	var isSmall=false; // 是小图吗?
+	
+	$(".wrap>div").click(function(){
+		var index = $(this).index();
+		if(isSmall){
+		    showBig(index);	
+		}else{
+			showSmall();
+		}
+		isSmall = !isSmall;
+	})
+	
+	showBig(0);
+	
+</script>
+

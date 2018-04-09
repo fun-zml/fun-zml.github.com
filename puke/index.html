@@ -8,6 +8,8 @@
       	margin: 0;
       	padding: 0;	
       }
+      .boo{width: 200px;height: 100px;margin: auto;position: absolute;top: 0;bottom: 0;left: 0;right: 0;}
+      .boo input{width: 200px;height: 30px;border: none;border: 10px solid sienna;display: block;margin-bottom: 10px;}
       .poker{
       	width: 142px;
       	height: 199px;
@@ -29,7 +31,11 @@
 	</style>
 </head>
 <body>
-	<input type="text"  id="tex1" placeholder="输入难度2-9" /><button id="btn">开始游戏</button><button id="btn2">重新开始</button>
+	<div class="boo">
+		<input type="text"  id="tex1" placeholder="输入难度2-9" />
+		<button id="btn">开始游戏</button><button id="btn2">重新开始</button>
+	</div>
+	
 	<div id="box">
 		<!-- <div class="poker">
 			<img src="images/card1.jpg"/>

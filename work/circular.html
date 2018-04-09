@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{background: skyblue;}
+			.box{width: 550px;height: 550px;border: 1px green solid;position: absolute;top: 0;bottom: 0;left: 0;right: 0;margin: auto;}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<canvas id="cvs" height="550" width="550"></canvas>			
+		</div>
+
+	</body>
+</html>
+
+<script>
+	
+	// 1 获取canvas的js对象
+	var cvs = document.getElementById("cvs");
+	
+	// 2 创建画布对象
+	var ctx = cvs.getContext("2d");
+	
+	console.log(cvs.width);
+
+	// 3 构造函数来创建星星  arc(x,y,r,starA,endA,false)
+	function Star(x,y,r,c){
+		this.x = x;
+		this.y = y;
+		this.r = r;
+		this.c = c;
+		this.max = 30;
+		this.grow = true;
+	}
+	
+	Star.prototype.draw=function(){
+		ctx.beginPath();
+		if(this.grow){
+			this.r++;
+			if(this.r>this.max){
+				this.grow = false;
+			}
+		}else{
+			this.r--;
+			if(this.r<0){
+				this.grow = true;
+				this.r=0;
+			}
+		}
+		ctx.fillStyle=this.c;
+		ctx.arc(this.x,this.y,this.r,0,Math.PI*2);
+		ctx.fill();
+	}
+	
+	var stars = [];
+	
+	for(var i=0;i<150;i++){
+		var x = Math.random()*cvs.width; 
+		var y = Math.random()*cvs.height;
+		var r = Math.random()*20+10;
+		var c = randomColor();
+		var star = new Star(x,y,r,c);
+		stars.push(star)
+	}
+	
+	function draw(){
+		ctx.clearRect(0,0,550,550);
+	    for(var i=0;i<stars.length;i++){
+		   stars[i].draw();
+	    }
+	}
+	
+	setInterval(draw,30);
+	
+	// 随机颜色
+	function randomColor(){
+		var r = parseInt(Math.random()*255);
+		var g = parseInt(Math.random()*255);
+		var b = parseInt(Math.random()*255);
+		return "rgb("+r+","+g+","+b+")";
+	}
+	
+</script>

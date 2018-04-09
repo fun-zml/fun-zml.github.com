@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+*{ margin:0; padding:0}
+ul{ list-style:none}
+.wrap{ width:500px;font-size:14px; margin:50px auto}
+.countTxt{ display:block; text-align:right; padding-bottom:10px;}
+.countTxt em{ font-size: 16px; font-weight: bold; font-style: normal; padding: 0 5px}
+.countTxt .red{ color: red;}
+textarea{ padding:10px; display:block; width:480px; resize:none; height:100px; border:1px solid #ccc; font-size:14px}
+.commonBtn{ height:40px; width:100px; border:1px solid #ccc; margin:10px 0 0 380px}
+hr{ margin:20px 0}
+.talkList li{ border:1px solid #ccc; padding:25px 20px 20px; border-radius:10px; position:relative; margin-bottom:20px}
+.talkList li p{min-height:50px; margin-bottom:10px; word-break:break-all}
+.talkList li .toolsBar{ text-align:right}
+.talkList li .toolsBar span{ margin-left:20px; cursor:pointer}
+.talkList li time{ position:absolute; top:10px; right:15px; color:#ccc;}
+</style>
+<script>
+
+window.onload=function(){
+	var textarea=document.getElementsByTagName('textarea')[0];
+	var countTxt=document.getElementsByClassName('countTxt')[0];
+	var commonBtn=document.getElementsByClassName('commonBtn')[0];
+	var talkList=document.getElementsByClassName('talkList')[0];
+	
+	function isChinese(str){  
+		var reCh=/[u00-uff]/;
+		return !reCh.test(str);
+	};
+	console.log(isChinese("哈"))
+	textarea.onkeyup=function(){
+		var len=this.value.length;
+		console.log(len);
+		var length=140-len;
+		if(len>=140){
+		  countTxt.innerHTML="您还可以输入<em>"+0+"</em>字";
+			this.value=this.value.substr(0,139);
+			;
+		}
+		countTxt.innerHTML="您还可以输入<em>"+length+"</em>字";
+		
+	};
+	commonBtn.onclick=function(){
+		var textcontents=textarea.value;
+		var reCh=/祖传|秘制|呵呵|老司机/;
+		
+		if(reCh.test(textcontents)){
+			textcontents=textcontents.replace(reCh,"###");
+		}
+		var htmldom="<li><p>"+textcontents+"</p><div class='toolsBar'><span class='fabiao'>顶 <b>0</b></span><span class='bad'>踩 <b>0</b></span></div><time></time></li>";
+		talkList.innerHTML=htmldom+talkList.innerHTML;
+		
+	};
+	
+	talkList.onclick=function(ev){
+		var obj=ev.target;
+		if(obj.tagName=="SPAN"){
+		obj.getElementsByTagName("b")[0].innerHTML=Math.floor(obj.getElementsByTagName("b")[0].innerHTML)+1;}
+	};
+	
+	
+}
+
+
+</script>
+</head>
+
+<body>
+<div class="wrap">
+    <form>
+        <span class="countTxt">您还可以输入<em>140</em>字</span>
+        <textarea></textarea>
+        <button class="commonBtn"  type="button">发表说说</button>
+    </form>
+    <hr>
+    <ul class="talkList"></ul>
+</div>
+
+<script>
+  var fabiao=document.getElementsByClassName("fabiao");
+	fabiao.onclick=function(){
+		alert('fabiao!');
+	}
+</script>
+
+</body>
+</html>
+
